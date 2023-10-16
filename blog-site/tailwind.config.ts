@@ -72,5 +72,6 @@ module.exports = {
     `prettier-plugin-tailwindcss`,
     require("daisyui"),
     require("tailwindcss-animate"),
+    require("@tailwindcss/aspect-ratio"),
   ],
 };
