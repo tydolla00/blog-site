@@ -5,8 +5,11 @@ import rehypeHighlight from "rehype-highlight";
 import rehypeSlug from "rehype-slug";
 import Video from "@/app/_components/video";
 import CustomImage from "@/app/_components/customImage";
+import { cache } from "react";
 
-export async function getPostsMeta(): Promise<Meta[] | undefined> {
+export const getPostsMeta = cache(getPosts);
+
+export async function getPosts(): Promise<Meta[] | undefined> {
   const blogPosts = await fetch(
     "https://api.github.com/repos/tydolla00/blogs/git/trees/main?recursive=1",
     {
@@ -14,8 +17,10 @@ export async function getPostsMeta(): Promise<Meta[] | undefined> {
         Accept: "application/vnd.github+json",
         Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
       },
+      // cache: "no-store", // only use on dev server
     }
   );
+
   if (!blogPosts.ok) return undefined;
 
   const repoFileTree: FileTree = await blogPosts.json();
