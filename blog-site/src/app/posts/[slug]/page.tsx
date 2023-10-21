@@ -5,27 +5,34 @@ import "highlight.js/styles/github-dark.css";
 
 export const revalidate = 0;
 // add metadata for the title.
+// need to revalidate.
+
+export async function generateStaticParams() {
+  const posts = await getPostsMeta(); //deduped!
+  if (!posts) return [];
+
+  return posts.map((post) => ({
+    slug: post.id,
+  }));
+}
+
+export async function generateMetadata({ params: { slug } }: Props) {
+  const post = await getPostByName(`${slug}.mdx`); //deduped!
+
+  if (!post) {
+    return {
+      title: "Post Not Found",
+    };
+  }
+
+  return {
+    title: post.meta.title,
+  };
+}
 
 type Props = { params: { slug: string } };
 
-const getPosts = async () => {
-  const posts = await getPostsMeta();
-
-  if (!posts) return [];
-
-  return posts.map((post) => ({ postId: post.id }));
-};
-
-const getPost = async ({ params: { slug } }: Props) => {
-  const post = await getPostByName(`${slug}.mdx`); //deduped
-
-  if (!post) return { title: "Post Not Found" };
-  return { title: post.meta.title };
-};
-
 export default async function Post({ params: { slug } }: Props) {
-  console.log({ slug });
-  //   const posts = await getPosts();
   const post = await getPostByName(`${slug}.mdx`); //deduped
 
   if (!post) notFound();
