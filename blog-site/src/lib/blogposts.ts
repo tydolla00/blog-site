@@ -4,8 +4,9 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeHighlight from "rehype-highlight";
 import rehypeSlug from "rehype-slug";
 import Video from "@/app/_components/video";
-import CustomImage from "@/app/_components/customImage";
+// import CustomImage from "@/app/_components/customImage";
 import { cache } from "react";
+import { H1, H2, CustomImage } from "@/app/_components/blog-components";
 
 export const getPostsMeta = cache(getPosts);
 
@@ -64,7 +65,7 @@ export async function getPostByName(
     tags: string[];
   }>({
     source: rawMDX,
-    components: { Video, CustomImage },
+    components: { H1, H2, Video, CustomImage },
     options: {
       parseFrontmatter: true,
       mdxOptions: {
