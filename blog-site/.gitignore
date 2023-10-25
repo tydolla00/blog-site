@@ -14,7 +14,9 @@
 
 # production
 /build
+src/app/test
 .env
+*.mdx
 
 # misc
 .DS_Store
