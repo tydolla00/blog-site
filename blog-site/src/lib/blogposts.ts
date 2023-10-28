@@ -63,6 +63,7 @@ export async function getPostByName(
     title: string;
     date: string;
     tags: string[];
+    description: string;
   }>({
     source: rawMDX,
     components: { H1, H2, Video, CustomImage },
@@ -83,6 +84,7 @@ export async function getPostByName(
   const blogPostObj: BlogPost = {
     meta: {
       id,
+      description: frontmatter.description,
       title: frontmatter.title,
       date: frontmatter.date,
       tags: frontmatter.tags,
