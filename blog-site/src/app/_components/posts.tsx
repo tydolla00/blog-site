@@ -13,7 +13,7 @@ export default async function Posts() {
       <H1 text="Blog Posts" />
       <ul className="w-full list-none">
         {posts.map((post) => (
-          <li className="flex space-y-3">
+          <li key={post.id} className="flex space-y-3">
             <Post key={post.id} post={post} />
           </li>
         ))}
@@ -44,7 +44,10 @@ export const Post = ({ post }: { post: Meta }) => {
         <div className="flex text-sm text-gray-400 space-x-2">
           <p>Tags:</p>
           {post.tags.map((tag) => (
-            <div className="badge badge-outline p-2 badge-xs hover:text-white cursor-default">
+            <div
+              key={tag}
+              className="badge badge-outline p-2 badge-xs hover:text-white cursor-default"
+            >
               {tag}
             </div>
           ))}
