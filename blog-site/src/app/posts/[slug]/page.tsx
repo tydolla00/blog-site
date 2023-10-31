@@ -55,7 +55,7 @@ export default async function Post({ params: { slug } }: Props) {
   return (
     <>
       <H1 text={meta.title} />
-      <p className="text-gray-400 space-y-7">{content}</p>
+      <div className="text-accent space-y-7">{content}</div>
       <div>Related: {tags}</div>
       <Link href="/">Back to home</Link>
     </>

@@ -51,14 +51,14 @@ module.exports = {
   },
   daisyui: {
     themes: [
-      "corporate",
+      "lofi",
       {
         mytheme: {
-          primary: "#343232",
-          secondary: "#343232",
-          accent: "#343232",
+          primary: "#38bdf8",
+          secondary: "#f0abfc",
+          accent: "#e7e5e4",
           neutral: "#272626",
-          "base-100": "#09090b",
+          "base-100": "#000000",
           info: "#0000ff",
           success: "#008000",
           warning: "#ffff00",
