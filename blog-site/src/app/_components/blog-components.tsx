@@ -50,14 +50,14 @@ export const InfoBlock = ({ children, type }: InfoBlockProps) => {
         </div>
         <p className="uppercase">{type}</p>
       </div>
-      <div className="p-4">{children}</div>
+      <div className="p-4 flex">{children}</div>
     </div>
   );
 };
 
-export const BlueLink = ({ href }: { href: string }) => (
+export const BlueLink = ({ href, text }: { href: string; text: string }) => (
   <Link className="text-sky-400 hover:underline" href={href}>
-    {href}
+    {text}
   </Link>
 );
 
