@@ -6,6 +6,7 @@ import rehypeSlug from "rehype-slug";
 import Video from "@/app/_components/video";
 // import CustomImage from "@/app/_components/customImage";
 import { cache } from "react";
+import Tabs from "@/app/_components/tabs";
 import {
   H1,
   H2,
@@ -89,6 +90,7 @@ export async function getPostByName(
       Example,
       InfoBlock,
       GroceryGraphic,
+      Tabs,
     },
     options: {
       parseFrontmatter: true,
