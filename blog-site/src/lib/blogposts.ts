@@ -17,6 +17,7 @@ import {
   Example,
   InfoBlock,
 } from "@/app/_components/blog-components";
+import { GroceryGraphic } from "@/app/_graphics/nextjs-caching";
 
 export const getPostsMeta = cache(getPosts);
 
@@ -87,6 +88,7 @@ export async function getPostByName(
       CodeBlock,
       Example,
       InfoBlock,
+      GroceryGraphic,
     },
     options: {
       parseFrontmatter: true,
