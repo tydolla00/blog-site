@@ -6,7 +6,17 @@ import rehypeSlug from "rehype-slug";
 import Video from "@/app/_components/video";
 // import CustomImage from "@/app/_components/customImage";
 import { cache } from "react";
-import { H1, H2, CustomImage } from "@/app/_components/blog-components";
+import {
+  H1,
+  H2,
+  CustomImage,
+  BlueLink,
+  BulletList,
+  Code,
+  CodeBlock,
+  Example,
+  InfoBlock,
+} from "@/app/_components/blog-components";
 
 export const getPostsMeta = cache(getPosts);
 
@@ -66,7 +76,18 @@ export async function getPostByName(
     description: string;
   }>({
     source: rawMDX,
-    components: { H1, H2, Video, CustomImage },
+    components: {
+      H1,
+      H2,
+      Video,
+      CustomImage,
+      BlueLink,
+      BulletList,
+      Code,
+      CodeBlock,
+      Example,
+      InfoBlock,
+    },
     options: {
       parseFrontmatter: true,
       mdxOptions: {

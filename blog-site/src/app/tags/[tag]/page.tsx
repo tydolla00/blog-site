@@ -1,3 +1,4 @@
+import { H1 } from "@/app/_components/blog-components";
 import { Post } from "@/app/_components/posts";
 import { getPostsMeta } from "@/lib/blogposts";
 import Link from "next/link";
@@ -23,13 +24,15 @@ export default async function Tags({
     );
   }
   return (
-    <>
-      <h2 className="text-3xl">Results for: #{tag}</h2>
-      <ul className="list-none">
+    <div className="mt-6 mx-auto max-w-2xl">
+      <H1 text={`Results for: #${tag}`} />
+      <ul className="w-full list-none">
         {tagPosts.map((post) => (
-          <Post post={post} key={post.id} />
+          <li key={post.id} className="flex space-y-3">
+            <Post key={post.id} post={post} />
+          </li>
         ))}
       </ul>
-    </>
+    </div>
   );
 }
