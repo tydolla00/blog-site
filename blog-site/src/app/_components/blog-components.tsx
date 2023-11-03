@@ -37,7 +37,7 @@ export const InfoBlock = ({ children, type }: InfoBlockProps) => {
       icon = "ℹ";
       break;
     case "warning":
-      typeName = "bg-orange-700 ";
+      typeName = "bg-yellow-600 ";
       icon = "⚠";
       break;
   }
@@ -50,13 +50,17 @@ export const InfoBlock = ({ children, type }: InfoBlockProps) => {
         </div>
         <p className="uppercase">{type}</p>
       </div>
-      <div className="p-4 flex">{children}</div>
+      <div className="p-4">{children}</div>
     </div>
   );
 };
 
 export const BlueLink = ({ href, text }: { href: string; text: string }) => (
-  <Link className="text-sky-400 hover:underline" href={href}>
+  <Link
+    className="text-sky-400 hover:underline relative"
+    href={href}
+    title={href}
+  >
     {text}
   </Link>
 );

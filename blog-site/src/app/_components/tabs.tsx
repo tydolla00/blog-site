@@ -15,8 +15,6 @@ import {
 export default function Tabs({
   stages,
   children,
-  title,
-  desc,
 }: {
   stages: number;
   children?: React.ReactNode;
@@ -34,15 +32,29 @@ export default function Tabs({
   return (
     <ShadTabs defaultValue="stage1">
       <TabsList>{renderTabs()}</TabsList>
-      <TabsContent value="stage1">
-        <Card>
-          <CardHeader>
-            <CardTitle>{title}</CardTitle>
-            <CardDescription>{desc}</CardDescription>
-          </CardHeader>
-          <CardContent>{children}</CardContent>
-        </Card>
-      </TabsContent>
+      {children}
     </ShadTabs>
   );
 }
+
+export const Tab = ({
+  value,
+  title,
+  desc,
+  children,
+}: {
+  value: string;
+  title: string;
+  desc: string;
+  children: React.ReactNode;
+}) => (
+  <TabsContent value={value}>
+    <Card>
+      <CardHeader>
+        <CardTitle>{title}</CardTitle>
+        <CardDescription>{desc}</CardDescription>
+      </CardHeader>
+      <CardContent>{children}</CardContent>
+    </Card>
+  </TabsContent>
+);
