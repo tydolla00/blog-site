@@ -4,9 +4,8 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeHighlight from "rehype-highlight";
 import rehypeSlug from "rehype-slug";
 import Video from "@/app/_components/video";
-// import CustomImage from "@/app/_components/customImage";
 import { cache } from "react";
-import Tabs from "@/app/_components/tabs";
+import Tabs, { Tab } from "@/app/_components/tabs";
 import {
   H1,
   H2,
@@ -91,6 +90,7 @@ export async function getPostByName(
       InfoBlock,
       GroceryGraphic,
       Tabs,
+      Tab,
     },
     options: {
       parseFrontmatter: true,
