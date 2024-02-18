@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  min-height: 100vh;
+}
+.homepage {
+  background-image: url("../../public//gradient.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+/* Inspo from typehero */
+@property --gradient-angle {
+  syntax: "<angle>";
+  initial-value: 360deg;
+  inherits: false;
+}
+@layer base {
+  :root {
+    --gradient-angle: 360deg;
+  }
+}
+code {
+  font-size: small;
+}
+
+.gradientButton {
+  background: linear-gradient(
+    var(--gradient-angle),
+    hsla(0, 0%, 100%, 0.7),
+    hsla(0, 0%, 100%, 0.3),
+    #ffffff,
+    hsla(0, 0%, 100%, 0.5)
+  );
+  animation: gradient-rotate 5s linear infinite reverse;
+}
+
+.glass {
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+@keyframes gradient-rotate {
+  0% {
+    --gradient-angle: 360deg;
+  }
+  100% {
+    --gradient-angle: 0deg;
+  }
+}
+
+/* @media only screen and (max-width: 500px) { 
+  pre {
+  }
+} */
