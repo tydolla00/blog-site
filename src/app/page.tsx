@@ -1,6 +1,4 @@
 "use client";
-import Link from "next/link";
-import { GradientText } from "./_components/text";
 import "@/app/test.css";
 import {
   MotionValue,
@@ -10,20 +8,14 @@ import {
   useTransform,
 } from "framer-motion";
 import React, { useRef } from "react";
-import { AnimatedTooltip } from "./_components/animatedTooltip";
-import { Spotlight } from "./_components/spotlight";
+import { AnimatedTooltip } from "./_components/aceternity/animatedTooltip";
+import { StickyScroll } from "./_components/aceternity/sticky-scroll";
 
 export default function Home() {
   return (
     <div className="homepage">
       <BioScreen />
       <ProjectsScreen />
-
-      {/* <TestParallax /> */}
-      {/* <Header /> */}
-      {/* <div className="absolute bottom-2 left-0 right-0">
-        <NextIndicator text="Projects" />
-      </div> */}
     </div>
   );
 }
@@ -31,11 +23,11 @@ export default function Home() {
 const NextIndicator = ({ text }: { text: string }) => {
   return (
     <div className="text-white flex flex-col items-center">
-      <h2 className="text-3xl uppercase hover:text-4xl font-bold hover:font-extrabold cursor-pointer">
+      <h2 className="text-3xl uppercase font-bold hover:font-extrabold">
         {text}
       </h2>
       <svg
-        className="animate-bounce mt-2 cursor-pointer"
+        className="animate-bounce mt-2"
         width="30"
         height="30"
         viewBox="0 0 15 15"
@@ -52,16 +44,6 @@ const NextIndicator = ({ text }: { text: string }) => {
     </div>
   );
 };
-
-const technologies: { title: string; url: string }[] = [
-  { title: "HTML", url: "html5/html5-original.svg" },
-  { title: "Javascript", url: "javascript/javascript-original.svg" },
-  { title: "Typescript", url: "typescript/typescript-original.svg" },
-  { title: "Java", url: "java/java-original.svg" },
-  { title: "React", url: "react/react-original.svg" },
-  { title: "Swift", url: "swift/swift-original.svg" },
-  { title: ".NET", url: "dotnetcore/dotnetcore-plain.svg" },
-];
 
 const Header = () => {
   const languages: {
@@ -175,12 +157,8 @@ const TestParallax = () => {
 const BioText = () => {
   return (
     <div className="h-max w-full rounded-md flex md:items-center md:justify-center antialiased relative -bottom-96">
-      <Spotlight
-        className="-top-40 left-0 md:left-60 md:-top-20"
-        fill="white"
-      />
       <div className=" p-4 max-w-7xl mx-auto relative z-10 w-full pt-20 md:pt-0">
-        <h1 className="text-4xl md:text-5xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-r from-neutral-50 from-30% to-neutral-400 bg-opacity-50">
+        <h1 className="text-4xl md:text-5xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-r from-neutral-50 from-60% to-neutral-400 bg-opacity-50">
           Software Developer
         </h1>
         <p className="mt-4 font-normal text-base text-neutral-300 max-w-lg text-center mx-auto">
@@ -188,7 +166,7 @@ const BioText = () => {
           and sharing my experiences.
         </p>
       </div>
-      <div className="absolute -bottom-96 left-0 right-0">
+      <div className="absolute -bottom-52 left-0 right-0">
         <NextIndicator text="Projects" />
       </div>
     </div>
@@ -217,7 +195,44 @@ const BioScreen = () => {
 const ProjectsScreen = () => {
   return (
     <ParallaxScreen>
-      <div>Hello</div>
+      <StickyScroll
+        content={[
+          {
+            title: "GameReviewz",
+            description: `
+            GameReviewz was my first introduction to web dev and React programming. 
+            I collaborated on it with two and my friends and looking back, it's pretty bad. 
+            But I'm proud of the work we did.
+            `,
+          },
+          {
+            title: "Topix",
+            description: `
+              A cool little project I started and never finished. This was my second attempt at React programming. This time utilizing Next.
+              Being able to understand the backend and frontend architecture was important to me, and learning NextJs was definitely beneficial.  
+              `,
+          },
+          {
+            title: "NotiMe",
+            description: `An iPhone app currently under construction. Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+              sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
+              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor 
+              in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+              cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`,
+          },
+          {
+            title: "Heir",
+            description: `An iPhone app currently under construction. Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+              sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
+              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor 
+              in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat 
+              cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor 
+              sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
+              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor 
+              in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.`,
+          },
+        ]}
+      />
     </ParallaxScreen>
   );
 };

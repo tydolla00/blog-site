@@ -4,6 +4,7 @@
 
 html {
   min-height: 100vh;
+  scroll-snap-type: y mandatory;
 }
 .homepage {
   background-image: url("../../public//gradient.png");
@@ -21,6 +22,7 @@ html {
 @layer base {
   :root {
     --gradient-angle: 360deg;
+    --red: rgba(255, 0, 0, 1);
   }
 }
 code {

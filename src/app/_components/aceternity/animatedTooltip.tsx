@@ -51,7 +51,7 @@ export const AnimatedTooltip = ({
   };
 
   return (
-    <div className="relative sm:top-36 sm:-left-10 top-20">
+    <div className="relative -left-6 sm:top-36 sm:-left-10 top-40">
       {items.map((item, idx) => (
         <div
           className="m-1 absolute group"

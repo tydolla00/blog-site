@@ -1,7 +1,3 @@
-html {
-  scroll-snap-type: y mandatory;
-}
-
 .parallax {
   height: 100vh;
   scroll-snap-align: center;
