@@ -26,37 +26,44 @@ export const CustomImage = ({ src, alt }: ImageProps) => (
 );
 
 export const InfoBlock = ({ children, type }: InfoBlockProps) => {
-  let typeName;
+  let bgColor;
+  let borderCorlor;
   let icon;
+  let textColor;
   switch (type) {
     case "danger":
-      typeName = "bg-red-700";
+      bgColor = "bg-red-700";
+      borderCorlor = "border-red-700";
       icon = "☢️";
+      textColor = "text-red-700";
       break;
     case "info":
-      typeName = "bg-sky-950";
+      bgColor = "bg-sky-950";
+      borderCorlor = "border-sky-950";
       icon = "ℹ";
+      textColor = "text-sky-400";
       break;
     case "warning":
-      typeName = "bg-yellow-900";
+      bgColor = "bg-yellow-900";
+      borderCorlor = "border-yellow-900";
       icon = "⚠";
+      textColor = "text-yellow-500";
       break;
   }
 
   return (
     <div
       className={cn(
-        "text-white bg-opacity-70 my-48 rounded-lg border border-yellow-300",
-        typeName
+        "text-white bg-opacity-70 my-48 rounded-lg border",
+        bgColor,
+        borderCorlor
       )}
     >
-      <div className="flex items-center space-x-2 p-3 pb-0">
-        <div className="p-2 border btn-circle flex justify-center items-center bg-yellow">
+      <div className="flex items-center space-x-2 p-4 font-extrabold tracking-widest pb-0">
+        {/* <div className="p-2 border btn-circle flex justify-center items-center bg-yellow">
           {icon}
-        </div>
-        <p className={cn("uppercase", `text-${typeName.split("-").slice(1)}`)}>
-          {type}
-        </p>
+        </div> */}
+        <p className={cn("uppercase", textColor)}>{type}</p>
       </div>
       <div className="p-4">{children}</div>
     </div>

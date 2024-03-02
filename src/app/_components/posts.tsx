@@ -28,7 +28,6 @@ export default async function Posts() {
 export const Post = ({ post }: { post: Meta }) => {
   const { id, title, date } = post;
   console.log(post);
-  //   format date 27:59 check github source code.
 
   return (
     <div className="group w-full">
