@@ -2,6 +2,7 @@ import { getPostsMeta } from "@/lib/blogposts";
 import { type Meta } from "../../../types";
 import Link from "next/link";
 import { H1, H2 } from "./blog-components";
+import { cn } from "@/lib/utils";
 
 export default async function Posts() {
   const posts = await getPostsMeta();
@@ -43,13 +44,7 @@ export const Post = ({ post }: { post: Meta }) => {
         <div className="flex text-sm text-gray-400 space-x-2">
           <p>Tags:</p>
           {post.tags.map((tag) => (
-            <Link
-              key={tag}
-              href={`/tags/${tag}`}
-              className="badge badge-outline p-2 badge-xs hover:text-white cursor-default"
-            >
-              {tag}
-            </Link>
+            <Tag tag={tag} />
           ))}
           <p>{new Date(date).toLocaleDateString()}</p>
         </div>
@@ -57,3 +52,23 @@ export const Post = ({ post }: { post: Meta }) => {
     </div>
   );
 };
+
+export const Tag = ({
+  tag,
+  className,
+}: {
+  tag: string;
+  className?: string;
+}) => (
+  <Link
+    key={tag}
+    href={`/tags/${tag}`}
+    className={cn(
+      "badge badge-outline p-2 badge-xs hover:text-white cursor-pointer",
+      className
+    )}
+    title={`Visit related ${tag} articles`}
+  >
+    {tag}
+  </Link>
+);

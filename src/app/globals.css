@@ -23,6 +23,7 @@ html {
   :root {
     --gradient-angle: 360deg;
     --red: rgba(255, 0, 0, 1);
+    --green: rgb(53, 164, 68);
   }
 }
 code {

@@ -17,6 +17,8 @@ import {
   Example,
   InfoBlock,
 } from "@/app/_components/blog-components";
+import { Header } from "@/app/_components/headings";
+import { TextRevealCard } from "@/app/_components/aceternity/text-reveal";
 import { GroceryGraphic } from "@/app/_graphics/nextjs-caching";
 
 export const getPostsMeta = cache(getPosts);
@@ -78,6 +80,8 @@ export async function getPostByName(
   }>({
     source: rawMDX,
     components: {
+      Header,
+      TextRevealCard,
       H1,
       H2,
       Video,
