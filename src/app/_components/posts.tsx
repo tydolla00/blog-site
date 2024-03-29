@@ -43,7 +43,7 @@ export const Post = ({ post }: { post: Meta }) => {
         <div className="flex text-sm text-gray-400 space-x-2">
           <p>Tags:</p>
           {post.tags.map((tag) => (
-            <Tag tag={tag} />
+            <Tag key={tag} tag={tag} />
           ))}
           <p>{new Date(date).toLocaleDateString()}</p>
         </div>

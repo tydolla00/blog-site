@@ -3,16 +3,22 @@ import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
-export const H1 = ({ id, text }: HeaderProps) => (
-  <h1 id={id} className="text-3xl font-bold my-6 text-white">
-    {text}
+export const H1 = ({ id, text, children, className }: HeaderProps) => (
+  <h1 id={id} className={cn("text-3xl font-bold my-6 text-white", className)}>
+    {text} {children}
   </h1>
 );
 
-export const H2 = ({ id, text }: HeaderProps) => (
-  <h2 id={id} className="text-2xl font-semibold text-white">
-    {text}
+export const H2 = ({ id, text, children, className }: HeaderProps) => (
+  <h2 id={id} className={cn("text-2xl font-semibold text-white", className)}>
+    {text} {children}
   </h2>
+);
+
+export const H3 = ({ id, text, children, className }: HeaderProps) => (
+  <h3 id={id} className={cn("text-xl font-semibold text-white", className)}>
+    {text} {children}
+  </h3>
 );
 
 export const CustomImage = ({ src, alt }: ImageProps) => (
@@ -126,6 +132,11 @@ export const Code = ({
   );
 };
 
-type HeaderProps = { id?: string; text: string };
+type HeaderProps = {
+  id?: string;
+  text: string;
+  children?: React.ReactNode;
+  className?: string;
+};
 
 type ImageProps = { src: string; alt: string };
