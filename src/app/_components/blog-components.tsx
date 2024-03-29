@@ -1,17 +1,24 @@
 import { Separator } from "@/shadcn/ui/separator";
 import Image from "next/image";
 import Link from "next/link";
+import { cn } from "@/lib/utils";
 
-export const H1 = ({ id, text }: HeaderProps) => (
-  <h1 id={id} className="text-3xl font-bold my-6 text-white">
-    {text}
+export const H1 = ({ id, text, children, className }: HeaderProps) => (
+  <h1 id={id} className={cn("text-3xl font-bold my-6 text-white", className)}>
+    {text} {children}
   </h1>
 );
 
-export const H2 = ({ id, text }: HeaderProps) => (
-  <h2 id={id} className="text-2xl font-semibold text-white">
-    {text}
+export const H2 = ({ id, text, children, className }: HeaderProps) => (
+  <h2 id={id} className={cn("text-2xl font-semibold text-white", className)}>
+    {text} {children}
   </h2>
+);
+
+export const H3 = ({ id, text, children, className }: HeaderProps) => (
+  <h3 id={id} className={cn("text-xl font-semibold text-white", className)}>
+    {text} {children}
+  </h3>
 );
 
 export const CustomImage = ({ src, alt }: ImageProps) => (
@@ -25,30 +32,44 @@ export const CustomImage = ({ src, alt }: ImageProps) => (
 );
 
 export const InfoBlock = ({ children, type }: InfoBlockProps) => {
-  let typeName;
+  let bgColor;
+  let borderCorlor;
   let icon;
+  let textColor;
   switch (type) {
     case "danger":
-      typeName = "bg-red-700";
+      bgColor = "bg-red-700";
+      borderCorlor = "border-red-700";
       icon = "☢️";
+      textColor = "text-red-700";
       break;
     case "info":
-      typeName = "bg-sky-950";
+      bgColor = "bg-sky-950";
+      borderCorlor = "border-sky-950";
       icon = "ℹ";
+      textColor = "text-sky-400";
       break;
     case "warning":
-      typeName = "bg-yellow-600 ";
+      bgColor = "bg-yellow-900";
+      borderCorlor = "border-yellow-900";
       icon = "⚠";
+      textColor = "text-yellow-500";
       break;
   }
 
   return (
-    <div className={`text-white bg-opacity-70 ${typeName} my-48`}>
-      <div className="flex items-center space-x-2 p-3 pb-0">
-        <div className="p-2 border btn-circle flex justify-center items-center">
+    <div
+      className={cn(
+        "text-white bg-opacity-70 my-48 rounded-lg border",
+        bgColor,
+        borderCorlor
+      )}
+    >
+      <div className="flex items-center space-x-2 p-4 font-extrabold tracking-widest pb-0">
+        {/* <div className="p-2 border btn-circle flex justify-center items-center bg-yellow">
           {icon}
-        </div>
-        <p className="uppercase">{type}</p>
+        </div> */}
+        <p className={cn("uppercase", textColor)}>{type}</p>
       </div>
       <div className="p-4">{children}</div>
     </div>
@@ -111,6 +132,11 @@ export const Code = ({
   );
 };
 
-type HeaderProps = { id?: string; text: string };
+type HeaderProps = {
+  id?: string;
+  text: string;
+  children?: React.ReactNode;
+  className?: string;
+};
 
 type ImageProps = { src: string; alt: string };

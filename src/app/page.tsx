@@ -10,12 +10,14 @@ import {
 import React, { useRef } from "react";
 import { AnimatedTooltip } from "./_components/aceternity/animatedTooltip";
 import { StickyScroll } from "./_components/aceternity/sticky-scroll";
+import Footer from "./_components/footer";
 
 export default function Home() {
   return (
     <div className="homepage">
       <BioScreen />
       <ProjectsScreen />
+      <Footer />
     </div>
   );
 }

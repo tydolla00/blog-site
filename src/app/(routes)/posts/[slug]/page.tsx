@@ -1,8 +1,8 @@
 import { getPostsMeta, getPostByName } from "@/lib/blogposts";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import "highlight.js/styles/github-dark.css";
-import { H1 } from "@/app/_components/blog-components";
+import { H1, H2, H3 } from "@/app/_components/blog-components";
+import { Tag } from "@/app/_components/posts";
 
 export const revalidate = 0;
 // add metadata for the title.
@@ -43,21 +43,17 @@ export default async function Post({ params: { slug } }: Props) {
   //   published date
 
   const tags = meta.tags.map((tag, i) => (
-    <Link
-      className="hover:text-underline hover:text-blue-400"
-      key={i}
-      href={`/tags/${tag}`}
-    >
-      {tag}
-    </Link>
+    <Tag className="badge-md mx-1.5 hover:text-sky-500" key={i} tag={tag} />
   ));
 
   return (
-    <>
-      <H1 text={meta.title} />
+    <section className="max-h-min">
+      <H1 className="mb-0 mt-20" text={meta.title} />
+      <p className="text-neutral-content mb-10 mt-2">{meta.date}</p>
       <div className="text-accent space-y-7">{content}</div>
-      <div>Related: {tags}</div>
-      <Link href="/">Back to home</Link>
-    </>
+      <H2 className="mt-6 flex items-center" text="Related:">
+        {tags}
+      </H2>
+    </section>
   );
 }
